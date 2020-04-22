@@ -1,7 +1,5 @@
 import React from "react";
 
-import Box from "../../atoms/Box/Box";
-import MainNavItem from "../../molecules/MainNavItem/MainNavItem";
 import {
   faBookOpen,
   faCog,
@@ -9,6 +7,11 @@ import {
   faHome,
   faLock,
 } from "@fortawesome/free-solid-svg-icons";
+
+import Box from "../../atoms/Box/Box";
+import MainNavItem from "../../molecules/MainNavItem/MainNavItem";
+import trayLogo from "../../assets/icons/trayIcon.png";
+import Logo from "../../molecules/Logo/Logo";
 
 const Sidebar = ({ onClick, selectedMenuItem }) => {
   const [selectedItem, setSelectedItem] = React.useState(selectedMenuItem);
@@ -26,11 +29,13 @@ const Sidebar = ({ onClick, selectedMenuItem }) => {
       display={"flex"}
       flexDirection={"column"}
       paddingY={20}
-      paddingX={13}
       width={240}
       backgroundColor={"white"}
     >
-      <Box as="nav" flex="1" alignItems={"start"}>
+      <Box>
+        <Logo logo={trayLogo} />
+      </Box>
+      <Box as="nav" flex="1" alignItems={"start"} paddingX={13} paddingY={27}>
         <MainNavItem
           itemText="Dashboard"
           href="#"
