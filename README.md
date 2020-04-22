@@ -1,68 +1,118 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installing the app
 
-## Available Scripts
+From your terminal, clone the repo from Github, `cd` into the new project directory, and run:
 
-In the project directory, you can run:
+```
+yarn
+```
 
-### `yarn start`
+This will install all the dependencies needed to run the app.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The app itself is a Component Library comprising components of different levels of complexity, modelled according to the Atomic Design methodology.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Viewing the Component Library
+
+Once installed, in the project directory, you can run:
+
+### `yarn storybook`
+
+This will run Storybook.<br />
+Open [http://localhost:9009/](http://localhost:9009/) to view it in the browser. This will let you browse all of the different components in the component library, and see how they can be combined to create increasingly complex UI components.
+
+## Running Tests
+
+From the project directory, you can run:
 
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## Documentation
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Using Styled System to create themeable Design Tokens
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+The Component Library uses [Styled-System](https://styled-system.com/) to create a theme that comprises a core set of design tokens based on scales that are mapped onto style props by the styled-system library.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This is a powerful approach to front-design that abstracts away CSS-specific values, and replaces them with generic values that can be used across tools, so that designers using Figma and developers building the code can all use the same values.
 
-### `yarn eject`
+These values are combined together into a theme file (/src/theme/theme.js), which contains a theme object that defines all of the tokens and needed by the Design System.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+One advantage of this approach is that all of the design tokens are contained in a single file, which acts as a single source of truth, and also makes looking up values more efficient than having to hunt them down.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Using Styled Components to apply CSS to the components
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+In addition to Styled-System, the component library uses [Styled Components](https://styled-components.com/), a CSS-in-JS library that Styled-System uses to apply CSS to the components being rendered.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Styled-System provides utility functions that map your theme's design tokens onto props that are then passed to Styled Components, which will turn them into CSS.
 
-## Learn More
+### Using Atomic Design to model the Component Library
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Brad Frost's Atomic Design methodology has been used to model the components according to their complexity. Following the methodology, the following core components have been created:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Atoms
 
-### Code Splitting
+- Box
+  A `div` that provides a container with flexible styling
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- HorizontalBox
+  A styled Box that provides appropriate `flex-box` styles to render the box's items horizontally.
 
-### Analyzing the Bundle Size
+- Text
+  A base text component, wrapped in a `span` that other tex-based components can restyle
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- HeaderText, MainNavText, HeaderText
+  Examples of restyled Text components
 
-### Making a Progressive Web App
+- Link
+  An <a> element that automatically stops the browser from navigating away from the page when clicked; which fires a onClick event when clicked; and can be flexibly styled.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- Button
 
-### Advanced Configuration
+#### Molecules
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- Logo
+- MainNavItem
+  A compound component comprising logo, link and chevron icon, with logic that changes the component's styles according to whether the item is hovered over or clicked.
 
-### Deployment
+#### Organisms
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+- Body
+  The main body of a page
 
-### `yarn build` fails to minify
+- Header
+  Header title and Button
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Sidebar
+  Main Nav Sidebar, featuring the company Logo, and a vertical menu
+
+#### Pages
+
+- Authentication
+  Layout example for the Authentication page, showing how the different components in this Design System can come together to create the required UI.
+
+### Creating Themeable components
+
+Both Styled System and Styled Components work together to provide themeable components. The values assigned to the tokens in the theme object in the `theme.js` file can be completely changed in a separete theme object, which can then be used by all the components used here to completely change their styles.
+
+The theme object is passed to Styled Components in its `ThemeProvider` component (to see this in action, see `.storybook/preview.js`). Changing themes is as simple as passing a different theme object into `ThemeProvider`, and can be done either on an app level, or a component-by-component basis.
+
+## Design Decisions
+
+There are many libraries that can help build a design system. One gaining great traction at the moment is [ThemeUI](https://theme-ui.com/), which uses the same format for defining themes as Styled System. However, ThemeUI takes things much further and provides its own rich set of components.
+
+Given that this is a test designed to demonstrate skill and knowledge in the Design System space, I felt that ThemeUI did too much out of the box, and so I chose to use Styled System instead. This gave me a framework for creating the Design Systme using themeable tokens, without handing me any components on the plate.
+
+Accordingly, the code you see here has been written entirely by myself, with Styled System and Styled Components simply wiring up the design tokens through to the CSS that's eventually output.
+
+## What's missing
+
+- A `Flex` component and a `Spacer` component would both be extremely useful. In many places, flex-box styles were used directly as attributes on the `Box` component, when they would have been better being baked into a `Flex` component. Equally, a `Spacer` component (which adds horizontal or space that's constrained according to the space scale) provides a nice declarative way of providing space between components.
+
+- The Dashboard page
+
+- Many unit tests
+
+- The Search bar of the Authentication page
+
+- The content of the Body
