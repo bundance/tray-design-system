@@ -6,6 +6,7 @@ import {
   fontFamily,
   fontSize,
   fontWeight,
+  layout,
   lineHeight,
   space,
 } from "styled-system";
@@ -18,6 +19,7 @@ const Button = styled.button(
   fontFamily,
   fontSize,
   fontWeight,
+  layout,
   lineHeight,
   space
 );
@@ -29,6 +31,7 @@ Button.propTypes = {
   ...fontFamily.propTypes,
   ...fontSize.propTypes,
   ...fontWeight.propTypes,
+  ...layout.propTypes,
   ...lineHeight.propTypes,
   ...space.propTypes,
 };
@@ -40,9 +43,9 @@ Button.defaultProps = {
   fontFamily: "Nunito Sans",
   fontStyle: "normal",
   fontSize: 6,
-  fontWeight: 5,
+  fontWeight: 3,
+  height: 40,
   paddingX: 16,
-  paddingY: 9,
 };
 
 export default Button;
