@@ -10,57 +10,61 @@ import {
   faLock,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Sidebar = ({ buttonText, onClick, title }) => {
-  const [state, setState] = React.useState("");
+const Sidebar = ({ onClick, selectedMenuItem }) => {
+  const [selectedItem, setSelectedItem] = React.useState(selectedMenuItem);
 
-  const handleClick = (itemText) => setState(itemText);
+  const handleClick = (itemText) => {
+    setSelectedItem(itemText);
+    onClick(itemText);
+  };
   return (
     <Box
       as={"aside"}
       borderRight={"1px solid"}
       borderRightColor="neutralMediumDark"
-      height={"100%"}
+      minHeight={"100%"}
+      display={"flex"}
+      flexDirection={"column"}
       paddingY={20}
       paddingX={13}
       width={240}
-      display={"flex"}
-      flexDirection={"column"}
+      backgroundColor={"white"}
     >
-      <Box flexWrap="1" alignItems={"start"}>
+      <Box as="nav" flex="1" alignItems={"start"}>
         <MainNavItem
           itemText="Dashboard"
           href="#"
           faIcon={faHome}
           onClick={() => handleClick("Dashboard")}
-          selected={state === "Dashboard"}
+          selected={selectedItem === "Dashboard"}
         />
         <MainNavItem
           itemText="Analytics"
           href="#"
           faIcon={faChartBar}
           onClick={() => handleClick("Analytics")}
-          selected={state === "Analytics"}
+          selected={selectedItem === "Analytics"}
         />
         <MainNavItem
           itemText="Library"
           href="#"
           faIcon={faBookOpen}
           onClick={() => handleClick("Library")}
-          selected={state === "Library"}
+          selected={selectedItem === "Library"}
         />
         <MainNavItem
           itemText="Authentications"
           href="#"
           faIcon={faLock}
           onClick={() => handleClick("Authentications")}
-          selected={state === "Authentications"}
+          selected={selectedItem === "Authentications"}
         />
         <MainNavItem
           itemText="Settings & People"
           href="#"
           faIcon={faCog}
           onClick={() => handleClick("Settings")}
-          selected={state === "Settings"}
+          selected={selectedItem === "Settings"}
         />
       </Box>
     </Box>
