@@ -13,11 +13,11 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 `;
 
 // Renders a Font Awesome icon if one's provided, or else a standard image icon
-const Icon = ({ color, faIcon, iconSrc }) =>
+const Icon = ({ faIcon, iconSrc, ...props }) =>
   iconSrc ? (
-    <ImgIcon src={iconSrc} />
+    <ImgIcon src={iconSrc} {...props} />
   ) : (
-    <StyledFontAwesomeIcon icon={faIcon} color={color} />
+    <StyledFontAwesomeIcon icon={faIcon} color={color} {...props} />
   );
 
 export default Icon;

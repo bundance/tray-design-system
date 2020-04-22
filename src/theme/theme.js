@@ -5,6 +5,7 @@ export const colors = {
   enabled: "#4acc94",
   greyLight: "#e5e5e5",
   greyDark: "#b8b8c7",
+  logo: "#0b0e35",
   mainNavSelectedBackground: "#f6f6f6",
   mainNavSelectedText: "#0d66e5",
   neutralMediumDark: "#e7e7eb",
