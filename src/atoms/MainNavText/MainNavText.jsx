@@ -1,12 +1,16 @@
 import React from "react";
 
-import Text from "../Text/Text";
+import Link from "../Link/Link";
 
 const MainNavText = (props) => (
-  <Text
+  <Link
     {...props}
-    color={props.selected ? "mainNavSelectedText" : "textRegular"}
-    bg={props.selected ? "mainNavSelectedBackground" : "inherit"}
+    textDecoration={"none"}
+    color={
+      props.selected || props.hover ? "mainNavSelectedText" : "textRegular"
+    }
+    fontWeight={props.selected || props.hover ? "600" : "300"}
+    border={"none"}
   />
 );
 
