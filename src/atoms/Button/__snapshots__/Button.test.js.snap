@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders correctlyy 1`] = `
+<button
+  class="sc-AxjAm bjOgFU"
+  color="white"
+  font-family="Nunito Sans"
+  font-size="6"
+  font-style="normal"
+  font-weight="3"
+  height="40"
+/>
+`;

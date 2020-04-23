@@ -1,3 +1,5 @@
+# Tray.io Design System
+
 ## Installing the app
 
 From your terminal, clone the repo from Github, `cd` into the new project directory, and run:
@@ -25,7 +27,7 @@ From the project directory, you can run:
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
+This launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ## Documentation
@@ -99,11 +101,17 @@ The theme object is passed to Styled Components in its `ThemeProvider` component
 
 ## Design Decisions
 
+### Choice of Dependencies
+
 There are many libraries that can help build a design system. One gaining great traction at the moment is [ThemeUI](https://theme-ui.com/), which uses the same format for defining themes as Styled System. However, ThemeUI takes things much further and provides its own rich set of components.
 
 Given that this is a test designed to demonstrate skill and knowledge in the Design System space, I felt that ThemeUI did too much out of the box, and so I chose to use Styled System instead. This gave me a framework for creating the Design Systme using themeable tokens, without handing me any components on the plate.
 
 Accordingly, the code you see here has been written entirely by myself, with Styled System and Styled Components simply wiring up the design tokens through to the CSS that's eventually output.
+
+### JavaScript vs TypeScript
+
+My initial thought was to write this using TypeScript. However, given that the test was only to take 4 hours, I decided against this in order to focus more on the functionality of the code and less on its type correctness. In addition, the components are not overly complex, and so TypeScript would be overkioll for this particular task.
 
 ## What's missing
 
@@ -112,6 +120,7 @@ Accordingly, the code you see here has been written entirely by myself, with Sty
 - The Dashboard page
 
 - Many unit tests
+  Most of the component would be tested using snapshot testing, as they have little internal logic or state. Accordingly, I ommited many of those for the sake of time.
 
 - The Search bar of the Authentication page
 

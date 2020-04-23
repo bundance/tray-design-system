@@ -30,6 +30,7 @@ const MainNavItem = ({ href, itemText, faIcon, onClick, selected }) => {
           }
         />
         <MainNavText
+          data-testid="main-nav-text"
           marginLeft={8}
           href={href}
           selected={selected}

@@ -17,7 +17,12 @@ const Icon = ({ faIcon, iconSrc, ...props }) =>
   iconSrc ? (
     <ImgIcon src={iconSrc} {...props} />
   ) : (
-    <StyledFontAwesomeIcon icon={faIcon} color={color} {...props} />
+    <StyledFontAwesomeIcon
+      icon={faIcon}
+      color={color}
+      {...props}
+      data-testid="icon"
+    />
   );
 
 export default Icon;
