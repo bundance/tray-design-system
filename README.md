@@ -32,6 +32,10 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ## Documentation
 
+### Atomic Design Component Breakdown
+
+When creating the design system, the Figma designs were cut up into smaller component screenshots. These can be found in the document _"Atomic Design Component Breakdown for Tray.io.pdf"_, which can be found in the documents folder.
+
 ### Using Styled System to create themeable Design Tokens
 
 The Component Library uses [Styled-System](https://styled-system.com/) to create a theme that comprises a core set of design tokens based on scales that are mapped onto style props by the styled-system library.
@@ -111,7 +115,11 @@ Accordingly, the code you see here has been written entirely by myself, with Sty
 
 ### JavaScript vs TypeScript
 
-My initial thought was to write this using TypeScript. However, given that the test was only to take 4 hours, I decided against this in order to focus more on the functionality of the code and less on its type correctness. In addition, the components are not overly complex, and so TypeScript would be overkioll for this particular task.
+My initial thought was to write this using TypeScript. However, given that the test was only to take 4 hours, I decided against this in order to focus more on the functionality of the code and less on its type correctness. In addition, the components are not overly complex, and so TypeScript would be overkill for this particular task.
+
+### Pixel perfect
+
+The theme values adhere to those in Figma as closely as possible. However, sometimes the Figma values produced a result in Storybook that did not match that in Figma. Font weights in particular would sometimes render heavier. When this happened, I opted to go for a value that more closely matched the look of the Figma design rather than its actual value.
 
 ## What's missing
 
